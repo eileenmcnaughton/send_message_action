@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/task/send_message</path>
+    <page_callback>CRM_SendMessageAction_Form_Task_SendWorkflowMessage</page_callback>
+    <title>Send message</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+</menu>

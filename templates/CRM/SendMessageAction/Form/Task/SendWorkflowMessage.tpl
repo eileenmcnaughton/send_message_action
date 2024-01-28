@@ -1,8 +1,8 @@
-{if $contact}
+{if !$no_go_reason}
   <div class="crm-submit-buttons">
       {include file="CRM/common/formButtons.tpl" location="top"}
   </div>
-  <p>Click send to send  to {$contact.display_name|escape} in their preferred language of
+  <p>Click send to send  to {$displayName|escape} in their preferred language of
     <em>{$language|escape}</em> to email address {$email}|escape}</p>
     {if array_key_exists('template', $form)}
         {$form.template.label} {$form.template.html}
@@ -21,7 +21,7 @@
   </div>
 {/if}
 
-{if !$contact}
+{if $no_go_reason}
   <p>An email cannot be sent because of {$no_go_reason|escape}</p>
 {/if}
 <script type="text/javascript">

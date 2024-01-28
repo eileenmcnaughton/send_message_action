@@ -28,11 +28,11 @@
     {literal}
     CRM.$(function($) {
       "use strict";
-      CRM.loadPreview = function (preferred_language, contributionID, template) {
+      CRM.loadPreview = function (preferred_language, contributionID, contactID, template) {
         CRM.api4("WorkflowMessage", "render", {
           "workflow": template,
           "language": preferred_language,
-          "values": {"contributionID": contributionID}
+          "values": {"contributionID": contributionID, "contactID": contactID}
         }).then(function (results) {
           CRM.$("#thank_you_subject").text(results[0]["subject"]);
           CRM.$("#thank_you_message").html(results[0]["html"]);

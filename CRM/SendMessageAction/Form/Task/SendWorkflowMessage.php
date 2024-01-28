@@ -24,7 +24,7 @@ use CRM_Contact_Form_ContactFormTrait;
     $preferredLanguageString = CRM_Core_PseudoConstant::getLabel('CRM_Contact_BAO_Contact', 'preferred_language', $preferredLanguage);
     $this->assign('language', $preferredLanguageString ?? $preferredLanguage);
     $this->add('select',  'template', E::ts('Template'), $this->getAvailableTemplates(), TRUE, [
-      'onClick' => 'CRM.loadPreview("' . $this->getLanguage() . '", ' . $this->getContributionID() . ', CRM.$(this).val())',
+      'onClick' => 'CRM.loadPreview("' . $this->getLanguage() . '", ' . $this->getContributionID() . ',' . $this->getContactID() . ' CRM.$(this).val())',
     ]);
     $message = $this->renderMessage();
     $this->assign('subject', $message['subject']);
@@ -151,7 +151,7 @@ use CRM_Contact_Form_ContactFormTrait;
     return WorkflowMessage::render()
       ->setWorkflow($this->getWorkflowTemplate())
       ->setLanguage($this->getLanguage())
-      ->setValues(['contributionID' => $this->getContributionID()])
+      ->setValues(['contributionID' => $this->getContributionID(), 'contactID' => $this->getContactID()])
       ->execute()
       ->first();
   }

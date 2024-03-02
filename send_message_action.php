@@ -36,6 +36,7 @@ function send_message_action_civicrm_links(string $op, ?string $objectName, $obj
   if ($objectName === 'Contribution') {
     $links[] = [
       'title' => ts('Send workflow template'),
+      'label' => ts('Send workflow template'),
       'name' => 'send_workflow',
       'url' => 'civicrm/task/send_message',
       'qs' => 'reset=1&id=%%id%%&entity=contribution',
